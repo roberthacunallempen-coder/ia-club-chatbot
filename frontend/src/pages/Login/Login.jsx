@@ -78,11 +78,6 @@ export default function Login() {
             {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
           </button>
         </form>
-
-        <div className="mt-6 text-center text-sm text-gray-500">
-          <p>Credenciales por defecto: admin / admin123</p>
-          <p className="mt-2">⚠️ Cambiar contraseña en producción</p>
-        </div>
       </div>
     </div>
   );
