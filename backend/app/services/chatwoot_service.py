@@ -13,8 +13,8 @@ class ChatwootService:
     """Service for interacting with Chatwoot API"""
     
     def __init__(self):
-        self.base_url = settings.chatwoot_base_url
-        self.api_key = settings.chatwoot_api_key
+        self.base_url = settings.chatwoot_url
+        self.api_key = settings.chatwoot_access_token
         self.account_id = settings.chatwoot_account_id
         self.client = httpx.AsyncClient(
             headers={"api_access_token": self.api_key},

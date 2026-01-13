@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Layout from './components/Layout/Layout';
+import { ProtectedRoute } from './components/ProtectedRoute';
+import Login from './pages/Login/Login';
 import Dashboard from './pages/Dashboard';
 import KnowledgeList from './pages/Knowledge/KnowledgeList';
 import KnowledgeAdd from './pages/Knowledge/KnowledgeAdd';
@@ -21,7 +23,8 @@ function App() {
     <BrowserRouter>
       <Toaster position="top-right" />
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
           <Route index element={<Dashboard />} />
           
           {/* Knowledge Routes */}

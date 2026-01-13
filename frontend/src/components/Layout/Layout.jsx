@@ -1,6 +1,7 @@
-import { Outlet, Link, useLocation } from 'react-router-dom';
-import {  Home, BookOpen, HelpCircle, FileText, MessageSquare, TestTube, Menu, Settings, GitBranch, Mail } from 'lucide-react';
+import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
+import {  Home, BookOpen, HelpCircle, FileText, MessageSquare, TestTube, Menu, Settings, GitBranch, Mail, LogOut } from 'lucide-react';
 import { useState } from 'react';
+import { useAuth } from '../../context/AuthContext';
 
 const navigation = [
   { name: 'Dashboard', href: '/', icon: Home },
@@ -16,7 +17,14 @@ const navigation = [
 
 export default function Layout() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, logout } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -64,12 +72,28 @@ export default function Layout() {
 
 function Sidebar() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   return (
     <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
       <div className="flex h-16 shrink-0 items-center border-b">
         <h1 className="text-xl font-bold text-primary-600">IA Club - Tío IA 🤖</h1>
       </div>
+      
+      {/* User info */}
+      {user && (
+        <div className="px-3 py-2 bg-primary-50 rounded-lg">
+          <p className="text-xs text-gray-500">Usuario</p>
+          <p className="text-sm font-medium text-gray-900">{user.username}</p>
+        </div>
+      )}
+      
       <nav className="flex flex-1 flex-col">
         <ul role="list" className="flex flex-1 flex-col gap-y-7">
           <li>
@@ -95,8 +119,18 @@ function Sidebar() {
               })}
             </ul>
           </li>
+          <li className="mt-auto border-t pt-4">
+            <button
+              onClick={handleLogout}
+              className="group flex w-full gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-red-600 hover:bg-red-50"
+            >
+              <LogOut className="h-5 w-5 shrink-0" />
+              Cerrar Sesión
+            </button>
+          </li>
         </ul>
       </nav>
     </div>
   );
 }
+
