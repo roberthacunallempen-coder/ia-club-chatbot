@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6;
+  }
+  
+  .input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+  }
+  
+  .label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+
+  /* Estilos para Markdown en mensajes del bot */
+  .markdown-content {
+    @apply text-sm leading-relaxed;
+  }
+  
+  .markdown-content p {
+    @apply mb-2 last:mb-0;
+  }
+  
+  .markdown-content ul {
+    @apply list-none ml-0 mb-2 space-y-1;
+  }
+  
+  .markdown-content ol {
+    @apply list-decimal ml-4 mb-2 space-y-1;
+  }
+  
+  .markdown-content li {
+    @apply mb-1;
+  }
+  
+  .markdown-content strong {
+    @apply font-bold text-gray-900;
+  }
+  
+  .markdown-content h3 {
+    @apply font-bold text-base mb-2 mt-3 first:mt-0;
+  }
+  
+  .markdown-content code {
+    @apply bg-gray-100 px-1 py-0.5 rounded text-xs;
+  }
+
+  /* Estilos personalizados para prose en chat */
+  .prose-sm {
+    @apply text-sm;
+  }
+
+  .prose p {
+    @apply my-2 first:mt-0 last:mb-0;
+  }
+
+  .prose strong {
+    @apply font-bold text-gray-900;
+  }
+
+  .prose ul {
+    @apply my-2 space-y-1;
+  }
+
+  .prose ol {
+    @apply my-2 space-y-1;
+  }
+
+  .prose li {
+    @apply my-1;
+  }
+
+  .prose h3 {
+    @apply text-base font-bold my-2 first:mt-0;
+  }
+
+  .prose code {
+    @apply bg-gray-800 text-gray-100 px-1.5 py-0.5 rounded text-xs;
+  }
+
+  .prose a {
+    @apply text-blue-600 hover:text-blue-800 underline font-medium cursor-pointer transition-colors;
+  }
+}

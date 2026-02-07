@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: iaclub-frontend:latest
+    container_name: iaclub_frontend
+    ports:
+      - "8080:80"
+    networks:
+      - easypanel
+    restart: unless-stopped
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.frontend.rule=Host(`app.iaclub.pro`)"
+        - "traefik.http.routers.frontend.entrypoints=websecure"
+        - "traefik.http.routers.frontend.tls.certresolver=letsencrypt"
+        - "traefik.http.services.frontend.loadbalancer.server.port=80"
+
+networks:
+  easypanel:
+    external: true

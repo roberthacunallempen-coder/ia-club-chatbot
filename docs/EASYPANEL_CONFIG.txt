@@ -1,0 +1,138 @@
+========================================
+🚀 CONFIGURACIÓN EASYPANEL - IA CLUB BOT
+========================================
+
+📋 PASO 1: CREAR PROYECTO
+--------------------------
+1. Ir a: http://31.97.91.222:3000/
+2. Clic en "+ New Project"
+3. Nombre: ia-club-chatbot
+4. Clic en "Create Project"
+
+
+📦 PASO 2: POSTGRESQL
+--------------------------
+1. Clic en "+ Add Service"
+2. Seleccionar "PostgreSQL"
+3. Configurar:
+   
+   Service Name: postgres
+   Version: 16
+   Database: chatbot_db
+   Username: chatbot_user
+   Password: EuPgmRUvh68jCStN7VOzlH2FQw1Lcbei
+
+4. Clic en "Deploy"
+5. ⏱️ ESPERAR 2 minutos
+
+
+🔴 PASO 3: REDIS
+--------------------------
+1. Clic en "+ Add Service"
+2. Seleccionar "Redis"
+3. Configurar:
+   
+   Service Name: redis
+   Version: 7
+
+4. Clic en "Deploy"
+
+
+⚙️ PASO 4: BACKEND (IMPORTANTE - COPIAR TODO)
+--------------------------
+1. Clic en "+ Add Service"
+2. Seleccionar "App" → "GitHub"
+3. Conectar cuenta GitHub (si es necesario)
+4. Seleccionar repositorio: roberthacunallempen-coder/ia-club-chatbot
+
+5. CONFIGURACIÓN BÁSICA:
+   Service Name: backend
+   Branch: main
+   Source Path: /backend
+   Build Method: Dockerfile
+   Port: 8000
+
+6. VARIABLES DE ENTORNO (copiar TODO esto en Environment):
+
+DATABASE_URL=postgresql://chatbot_user:EuPgmRUvh68jCStN7VOzlH2FQw1Lcbei@postgres:5432/chatbot_db
+REDIS_URL=redis://redis:6379/0
+OPENAI_API_KEY=TU_API_KEY_DE_OPENAI_AQUI
+OPENAI_MODEL=gpt-4o-mini
+SECRET_KEY=USnjAGFfDIpYa7o9bdMscRthH8u6L4Xr
+JWT_SECRET_KEY=EuPgmRUvh68jCStN7VOzlH2FQw1Lcbei
+ADMIN_USERNAME=iaclub_admin
+ADMIN_PASSWORD=IAClub2026!Secure#Bot
+ENVIRONMENT=production
+DEBUG=False
+ALLOWED_ORIGINS=*
+RATE_LIMIT_PER_MINUTE=30
+RATE_LIMIT_PER_HOUR=500
+CHATWOOT_URL=https://app.chatwoot.com
+CHATWOOT_ACCESS_TOKEN=
+CHATWOOT_ACCOUNT_ID=0
+CHATWOOT_INBOX_ID=0
+CHATWOOT_WEBHOOK_SECRET=
+LOG_LEVEL=INFO
+APP_NAME=IA Club Chatbot
+
+7. ⚠️ IMPORTANTE: Reemplazar "TU_API_KEY_DE_OPENAI_AQUI" con tu API key real
+8. Clic en "Deploy"
+9. ⏱️ ESPERAR 5 minutos (primera vez tarda más)
+
+
+🎨 PASO 5: FRONTEND
+--------------------------
+1. Clic en "+ Add Service"
+2. Seleccionar "App" → "GitHub"
+3. Mismo repositorio: roberthacunallempen-coder/ia-club-chatbot
+
+4. CONFIGURACIÓN BÁSICA:
+   Service Name: frontend
+   Branch: main
+   Source Path: /frontend
+   Build Method: Dockerfile
+   Port: 80
+
+5. VARIABLES DE ENTORNO:
+
+VITE_API_URL=http://backend:8000
+
+6. Clic en "Deploy"
+7. ⏱️ ESPERAR 3 minutos
+
+
+✅ PASO 6: VERIFICAR
+--------------------------
+1. En Easypanel, ir a cada servicio y ver que estén "Running" (verde)
+2. Backend debe mostrar URL: http://31.97.91.222:XXXX
+3. Frontend debe mostrar URL: http://31.97.91.222:YYYY
+4. Abrir URL del frontend en navegador
+5. Debería ver pantalla de login
+
+
+🔐 CREDENCIALES ADMIN
+--------------------------
+Usuario: iaclub_admin
+Contraseña: IAClub2026!Secure#Bot
+
+
+⚠️ IMPORTANTE - SI HAY ERRORES:
+--------------------------
+1. Click en cada servicio
+2. Ir a pestaña "Logs"
+3. Buscar mensajes de error en rojo
+4. Copiar el error y enviármelo para ayudarte
+
+
+🎯 PRÓXIMOS PASOS (OPCIONAL):
+--------------------------
+- Configurar dominio propio
+- Activar SSL/HTTPS
+- Conectar Chatwoot
+- Cargar base de conocimiento
+
+
+========================================
+¿NECESITAS AYUDA? 
+Envíame pantallazos de cualquier error
+========================================
